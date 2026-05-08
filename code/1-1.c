@@ -4,7 +4,7 @@ struct S1
 {
     char c;
     int i;
-    long long;
+    long long l;
 };
 
 #pragma pack(push, 1)
@@ -12,7 +12,7 @@ struct S2
 {
     char c;
     int i;
-    long long;
+    long long l;
 };
 #pragma pack(pop)
 
