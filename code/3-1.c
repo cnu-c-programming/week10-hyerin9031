@@ -31,16 +31,19 @@ int main(){
                     p = p->next;
                 }
                 p->next = newStudent;
+                p=NULL;
             }
         }
         if(strcmp(ptr, "delete") == 0){
             struct Student* p = head;
             char* name = strtok(NULL, " ");
             if(strcmp(p->name, name) == 0){
+                struct Student* tmp = head;
                 head = head->next;
+                free(tmp);
             }
             else{
-                while(strcmp(name, p->next->name) != 0){
+                while(p->next != NULL && (strcmp(name, p->next->name) != 0)){
                     p = p->next;
                 }
 
@@ -49,7 +52,7 @@ int main(){
                 free(tmp);
 
             }
-            
+            p=NULL;
 
         }
         if(strcmp(ptr, "print") == 0){
@@ -58,6 +61,7 @@ int main(){
                 printf("%s %d\n", p->name, p->score);
                 p = p->next;
             }
+            p=NULL;
         }
         fgets(str, sizeof(str), stdin);
         str[strcspn(str, "\n")] = '\0';
@@ -70,5 +74,7 @@ int main(){
         free(head);
         head = p;
     }
+    head = NULL;
+    p=NULL;
 
 }
